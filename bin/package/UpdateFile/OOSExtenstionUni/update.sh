@@ -154,7 +154,6 @@ remove_feature com.oplus.ota.questionnaire_support
 remove_feature com.android.launcher.DEFAULT_DRAWER_MODE
 remove_feature com.android.settings.screen_physics_size_cm
 remove_feature com.oplus.wallpapers.ai_camera_movement
-cp -rf $BLOB/feature_com.hma.otablock.xml $MY_STOCK/etc/extension
 echo "[MODS] - Done"
 
 else

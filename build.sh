@@ -10,6 +10,7 @@ chmod 777 ${work_dir}/bin/Linux/x86_64/*
 source $work_dir/functions.sh
 check unzip aria2c curl 7z zip java zipalign python3 zstd bc xmlstarlet aapt
 source "$work_dir/bin/ddevice/getROM.sh" "$baserom"
+BLOB="$work_dir/bin/package/UpdateFile/OOSExtenstionUni"
 
 if unzip -l ${baserom} | grep -q "payload.bin"; then
     baserom_type="payload"
@@ -54,9 +55,12 @@ if [ -f $work_dir/${baserom}.zip ]; then
 fi
 rm -rf build/baserom/payload.bin
 bash $work_dir/bin/package/install.sh
+MY_STOCK="$work_dir/build/baserom/images/my_stock"
 
 remove_fsv "$work_dir/build/baserom/images/system/system/framework"
 remove_fsv "$work_dir/build/baserom/images/system_ext"
+
+cp -rf $BLOB/feature_com.hma.otablock.xml $MY_STOCK/etc/extension
 
 
 echo "[REPACK] - Packing partition..."
