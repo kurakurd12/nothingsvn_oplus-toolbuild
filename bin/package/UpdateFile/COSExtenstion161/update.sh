@@ -10,7 +10,7 @@ BLOB="$work_dir/bin/package/UpdateFile/COSExtenstion161"
 BASE_REGION=$(cat $work_dir/bin/ddevice/rom_region.txt)
 android=$(cat $work_dir/bin/ddevice/androidver.txt)
 
-if [[ $ROMVERSION == "16.0.7" ]]; then
+if [[ $ROMVERSION == "16.0.7" || $ROMVERSION == "16.0.8" ]]; then
 sed -i "s/persist.sys.oplus.anim_level=2/persist.sys.oplus.anim_level=1/g" $MAIN_FOLDER/my_product/build.prop
 
 #Modify Feature
