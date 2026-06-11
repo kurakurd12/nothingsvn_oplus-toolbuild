@@ -20,13 +20,6 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-
-      - name: Start Notify
-        run: |
-          pip install requests
-          python notify.py start "${{ github.repository }}" "${{ inputs.input_url }}" "oplus" "${{ inputs.builder_name }}" "${{ inputs.builder_id }}"
 
       - name: Clean All Unused file,application
         run: |
@@ -45,6 +38,14 @@ jobs:
           remove-dotnet: 'true'
           remove-android: 'true'
           remove-haskell: 'true'
+          
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Start Notify
+        run: |
+          pip install requests
+          python notify.py start "${{ github.repository }}" "${{ inputs.input_url }}" "oplus" "${{ inputs.builder_name }}" "${{ inputs.builder_id }}"
 
       - name: Set up Time
         run: |
